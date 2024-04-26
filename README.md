@@ -7,12 +7,13 @@ projede kullanılan teknolojiler arasında Django Framework, PostgreSQL veritaba
 
 Projede kullanılan kütüphaneler aşağıda belirtilmiştir.
 
-shell
+"shell
 Django
 Datatable
 auth
 djangorestframework
 jsonschema
+"
 
 
 # :desktop_computer: İHA Kiralama Web Uygulaması
@@ -60,6 +61,15 @@ Kullanıcın kiraladığı İHA'lar aşağıdaki API ile ekrana getirilir.
 
 ![Kiralanan İHA Listesi](ihaikirala/ProjeEkranFotograflari/KiralananApi.png)
 
+
+### İHA KİRALA
+
+kullanıcı bu ekranda dropdown ile iha seçerek takvimden başlangıç ve bitiş tarihlerini belirleyerek yeni iha kiralar.
+
+
+![İhaKiralamaSayfası](https://github.com/ferhattoson/-haKiralama/assets/105549351/94a17d01-58a5-478a-84f6-c520806dcd53)
+
+
 ### İHA Listesi
 
 Kiralanabilir İHA'lar bu ekranda listelenir.
@@ -69,6 +79,11 @@ Kiralanabilir İHA'lar bu ekranda listelenir.
 Datatable uygulanmış tablo aşağıdaki gibidir.
 
 ![İHA Listesi Datatable](ihaikirala/ProjeEkranFotograflari/datatableUygulanmısTablo.png)
+
+
+Kullanıcın eklediği İHA'lar aşağıdaki API ile ekrana getirilir.
+
+![ihaApi](https://github.com/ferhattoson/-haKiralama/assets/105549351/ba3d4fd6-c4b6-4b38-8814-23ff84627fd7)
 
 ### İHA Ekle
 
@@ -87,3 +102,8 @@ Veritabanında mevcut bir İHA'nin bilgileri güncellenmek istendiğinde bu ekra
 Veritabanında mevcut bir İHA silinmek istediğinde bu ekranda yapılır. Kullanıcının hata yapmasını önlemek için "Sil" butonuna tıklandıktan sonra bir uyarı mesajı verilerek kullanıcı uyarılır.
 
 ![İHA Silme](ihaikirala/ProjeEkranFotograflari/İhaSilme.png)
+
+### Database:
+
+
+![database](https://github.com/ferhattoson/-haKiralama/assets/105549351/b0c7b6f9-ace5-493e-98cb-7cf518d875ce)
