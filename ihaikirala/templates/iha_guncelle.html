@@ -1,0 +1,66 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İHA Güncelle</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url('https://haber.aero/wp-content/uploads/2019/01/maket-cekilisi1-e1547714015185.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4"style="color: #fff;">İHA Güncelle</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="ihaAd">İHA Adı:</label>
+                <input type="text" class="form-control" id="ihaAd" name="ihaAd" value="{{ iha.ihaAd }}">
+            </div>
+            <div class="form-group">
+                <label for="ihaMarka">İHA Markası:</label>
+                <input type="text" class="form-control" id="ihaMarka" name="ihaMarka" value="{{ iha.ihaMarka }}">
+            </div>
+            <div class="form-group">
+                <label for="ihaModel">İHA Modeli:</label>
+                <input type="text" class="form-control" id="ihaModel" name="ihaModel" value="{{ iha.ihaModel }}">
+            </div>
+            <div class="form-group">
+                <label for="ihaAgirlik">İHA Ağırlığı:</label>
+                <input type="text" class="form-control" id="ihaAgirlik" name="ihaAgirlik" value="{{ iha.ihaAgirlik }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+        </form>
+    </div>
+    
+  {% include 'footer.html' %}
+</body>
+
+</html>

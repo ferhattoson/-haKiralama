@@ -1,0 +1,139 @@
+<!-- anasayfa.html -->
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <title>İHA Kiralama</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .ihalar-container {
+      padding: 50px 0;
+    }
+
+    .ihalar-container .ihalar-row {
+      margin-bottom: 30px;
+    }
+
+    .ihalar-container .ihalar-item {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .ihalar-container .ihalar-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .ihalar-container .ihalar-item .ihalar-content {
+      padding: 20px;
+    }
+
+    /* Footer stilini buraya ekle */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #343a40;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+    h1 {
+    text-align: center;
+  }
+
+  </style>
+</head>
+
+<body>
+
+<h1>İha Kiralama</h1>
+  <div class="container ihalar-container">
+    <div class="row ihalar-row">
+      <div class="col-md-4">
+        <div class="ihalar-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiBgLlH0CkG_leyFukuMdqLSxydx_IUjk49w&s"
+            alt="İHA Resmi 1">
+          <div class="ihalar-content">
+            <h3>İHA Kiralama Hizmeti 1</h3>
+            <p>Açıklama buraya gelecek...</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ihalar-item">
+          <img src="https://www.savunmasanayist.com/wp-content/uploads/2023/11/SIRTAP-IHA.jpg"
+            alt="İHA Resmi 2">
+          <div class="ihalar-content">
+            <h3>İHA Kiralama Hizmeti 2</h3>
+            <p>Açıklama buraya gelecek...</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ihalar-item">
+          <img src="https://www.defensehere.com/img/2021/11/turkiyenin-ihrac-edilen-ilk-milli-ihasi-bayraktar-mini-iha-roportaj.jpeg"
+            alt="İHA Resmi 3">
+          <div class="ihalar-content">
+            <h3>İHA Kiralama Hizmeti 3</h3>
+            <p>Açıklama buraya gelecek...</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ihalar-item">
+          <img src="https://www.indyturk.com/sites/default/files/styles/1368x911/public/article/main_image/2022/11/10/1050391-562396535.jpg?itok=hXwMsS4B"
+            alt="İHA Resmi 2">
+          <div class="ihalar-content">
+            <h3>İHA Kiralama Hizmeti 4</h3>
+            <p>Açıklama buraya gelecek...</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ihalar-item">
+          <img src="https://www.ulusavunma.com/wp-content/uploads/2023/06/Yunanistan_Archytas_iHa_Siha_Drone_Yunanistan_Yerli_iHa_Siha_Archytas.jpg"
+            alt="İHA Resmi 3">
+          <div class="ihalar-content">
+            <h3>İHA Kiralama Hizmeti 5</h3>
+            <p>Açıklama buraya gelecek...</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ihalar-item">
+          <img src="https://www.savunmasanayist.com/wp-content/uploads/2023/03/IHA-230.jpg"
+            alt="İHA Resmi 3">
+          <div class="ihalar-content">
+            <h3>İHA Kiralama Hizmeti 6</h3>
+            <p>Açıklama buraya gelecek...</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'footer.html' %}
+
+</body>
+
+</html>

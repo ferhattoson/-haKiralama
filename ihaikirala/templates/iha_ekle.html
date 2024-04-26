@@ -1,0 +1,116 @@
+<!-- iha_ekle.html -->
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İHA Ekle</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      background-image: url('https://haber.aero/wp-content/uploads/2019/01/maket-cekilisi1-e1547714015185.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+    }
+     h2{
+      color: #fff;
+      margin: top 40px;
+     }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #343a40;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2 class="text-center ">İha Ekle</h2>
+      <form id="ihaForm" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="ihaAd">İHA Adı:</label>
+          <input type="text" class="form-control" id="ihaAd" name="ihaAd">
+        </div>
+        <div class="form-group">
+          <label for="ihaMarka">İHA Markası:</label>
+          <input type="text" class="form-control" id="ihaMarka" name="ihaMarka">
+        </div>
+        <div class="form-group">
+          <label for="ihaModel">İHA Modeli:</label>
+          <input type="text" class="form-control" id="ihaModel" name="ihaModel">
+        </div>
+        <div class="form-group">
+          <label for="ihaAgirlik">İHA Ağırlığı:</label>
+          <input type="text" class="form-control" id="ihaAgirlik" name="ihaAgirlik">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Ekle</button>
+      </form>
+      <div id="error-message" class="text-danger"></div>
+    </div>
+  </div>
+  
+  {% include 'footer.html' %}
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#ihaForm').submit(function (event) {
+        event.preventDefault();
+        var ihaAd = $('#ihaAd').val();
+        var ihaMarka = $('#ihaMarka').val();
+        var ihaModel = $('#ihaModel').val();
+        var ihaAgirlik = $('#ihaAgirlik').val();
+
+        // Boş değer kontrolü
+        if (!ihaAd || !ihaMarka || !ihaModel || !ihaAgirlik) {
+          $('#error-message').text('Lütfen tüm alanları doldurun.');
+          return;
+        }
+
+        // Ajax ile formu gönder
+        $.ajax({
+          type: 'POST',
+          url: '/iha_ekle',
+          data: {
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+            'ihaAd': ihaAd,
+            'ihaMarka': ihaMarka,
+            'ihaModel': ihaModel,
+            'ihaAgirlik': ihaAgirlik
+          },
+          success: function (response) {
+            // Başarılı işlem mesajı
+            alert('İHA başarıyla eklendi.');
+            // Sayfayı yenile
+            location.reload();
+          },
+          error: function (xhr, errmsg, err) {
+            // Hata mesajı
+            $('#error-message').text('İHA ekleme işlemi sırasında bir hata oluştu.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

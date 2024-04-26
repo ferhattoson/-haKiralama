@@ -1,0 +1,114 @@
+<!-- kiralanan_iha_guncelle.html -->
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiralanan İHA Güncelle</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url('https://haber.aero/wp-content/uploads/2019/01/maket-cekilisi1-e1547714015185.jpg');
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4"style="color: #fff;">Kiralanan İHA Güncelle</h2>
+        <form id="guncelleForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="ihaAd">İHA Adı:</label>
+                <input type="text" class="form-control" id="ihaAd" name="ihaAd" value="{{ kiralanan_iha.ihaAd }}">
+                <small id="ihaAdError" class="text-danger"></small> <!-- Hata mesajı alanı -->
+            </div>
+            <div class="form-group">
+                <label for="ihaMarka">İHA Markası:</label>
+                <input type="text" class="form-control" id="ihaMarka" name="ihaMarka"
+                    value="{{ kiralanan_iha.ihaMarka }}">
+                <small id="ihaMarkaError" class="text-danger"></small> <!-- Hata mesajı alanı -->
+            </div>
+            <div class="form-group">
+                <label for="ihaModel">İHA Modeli:</label>
+                <input type="text" class="form-control" id="ihaModel" name="ihaModel"
+                    value="{{ kiralanan_iha.ihaModel }}">
+                <small id="ihaModelError" class="text-danger"></small> <!-- Hata mesajı alanı -->
+            </div>
+            <div class="form-group">
+                <label for="ihaAgirlik">İHA Ağırlığı:</label>
+                <input type="text" class="form-control" id="ihaAgirlik" name="ihaAgirlik"
+                    value="{{ kiralanan_iha.ihaAgirlik }}">
+                <small id="ihaAgirlikError" class="text-danger"></small> <!-- Hata mesajı alanı -->
+            </div>
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+        </form>
+    </div>
+
+    {% include 'footer.html' %}
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#guncelleForm').submit(function (event) {
+                event.preventDefault();  // Formun varsayılan gönderme işlevini durdur
+
+                var form = $(this);
+                var formData = form.serialize();  // Form verilerini al
+
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            // Başarılı güncelleme durumunda yönlendirme veya mesaj gösterme
+                            alert('İHA başarıyla güncellendi.');
+                            window.location.href = "{% url 'kiralanan_ihalar_listele' %}";
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function (key, value) {
+                            $('#' + key + 'Error').text(value[0]);  // Hata mesajlarını ilgili alanlarda göster
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

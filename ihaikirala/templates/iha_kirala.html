@@ -1,0 +1,79 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İHA Kirala</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: url('https://haber.aero/wp-content/uploads/2019/01/maket-cekilisi1-e1547714015185.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        /* Form stilleri */
+        form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        form label {
+            color: #fff;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center mb-4">İHA Kirala</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="iha_id">İHA Seçin:</label>
+                        <select class="form-control" id="iha_id" name="iha_id">
+                            {% for iha in ihalar %}
+                            <option value="{{ iha.id }}">{{ iha.ihaAd }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="baslangic_tarihi">Başlangıç Tarihi:</label>
+                        <input type="date" class="form-control" id="baslangic_tarihi" name="baslangic_tarihi">
+                    </div>
+                    <div class="form-group">
+                        <label for="bitis_tarihi">Bitiş Tarihi:</label>
+                        <input type="date" class="form-control" id="bitis_tarihi" name="bitis_tarihi">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirala</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  {% include 'footer.html' %}
+</body>
+
+</html>
